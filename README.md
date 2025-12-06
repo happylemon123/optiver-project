@@ -13,6 +13,15 @@ This project implements a production-grade machine learning pipeline to predict 
     *   **Weighted Average Price (WAP):** The "True" price of the stock.
 *   **Performance:** Achieved MAE ~5.41 (Top 15% benchmark) using an optimized LightGBM Gradient Boosting model.
 
+## Quick Links (Explore the Code)
+*   **📂 The Code (`src/`):**
+    *   [feature_engineering.py](src/feature_engineering.py): See how we calculate "Imbalance" and "Volatility" using parallel processing.
+    *   [train.py](src/train.py): See the LightGBM training loop and "Time Series Split" logic.
+*   **📚 The Documentation (`docs/`):**
+    *   [Advanced Concepts Guide](docs/advanced_concepts_guide.md): Explaining GRU, Transformers, and Kalman Filters.
+    *   [Technical Deep Dive](docs/technical_deep_dive.md): C++ dependencies and LightGBM vs XGBoost syntax.
+    *   [Kaggle Analysis](docs/kaggle_analysis.md): Breakdown of the winning strategy (MAE 5.40).
+
 ## Project Structure
 ```
 ├── Dockerfile              # Defines the reproducible Data Science environment
