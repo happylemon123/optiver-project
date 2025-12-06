@@ -4,11 +4,14 @@
 
 This project implements a production-grade machine learning pipeline to predict short-term price movements of Nasdaq-listed stocks, based on the [Optiver - Trading at the Close](https://www.kaggle.com/competitions/optiver-trading-at-the-close) Kaggle competition.
 
-## Key Features
-*   **Model:** LightGBM (Gradient Boosting Decision Tree) optimized for tabular financial data.
-*   **Feature Engineering:** Parallel processing (`joblib`) to calculate Order Book Imbalance, Realized Volatility, and Price Spreads across 200+ stocks.
-*   **Architecture:** Fully Dockerized environment ensuring reproducibility and handling C++ dependencies (`libgomp1`) for LightGBM.
-*   **Performance:** Achieved MAE ~5.41 (Top 15% benchmark) using advanced market microstructure features.
+## Technical Highlights (The "Why This Matters")
+*   **Parallel Computing:** Utilizes `joblib` to parallelize feature engineering across all CPU cores, processing 200+ stock order books simultaneously and reducing runtime by 40%.
+*   **Dockerized Environment:** Fully reproducible container handling Python libraries and low-level C++ dependencies (`libgomp1`) required for LightGBM.
+*   **Advanced Feature Engineering:** Implements HFT-grade market microstructure features:
+    *   **Order Book Imbalance:** Quantifying the pressure between Bids and Asks.
+    *   **Realized Volatility:** Measuring the "fear" in the market.
+    *   **Weighted Average Price (WAP):** The "True" price of the stock.
+*   **Performance:** Achieved MAE ~5.41 (Top 15% benchmark) using an optimized LightGBM Gradient Boosting model.
 
 ## Project Structure
 ```
@@ -20,6 +23,7 @@ This project implements a production-grade machine learning pipeline to predict 
 │   ├── train.py                # LightGBM training & evaluation
 │   └── generate_dummy_data.py  # Test data generator
 └── data/                   # Dataset storage
+└── docs/                   # Detailed Concept Guides & Analysis
 ```
 
 ## How to Run (The "One-Click" Way)
@@ -36,9 +40,9 @@ This project is designed to run with **Docker** to avoid dependency hell.
     2.  Install all libraries.
     3.  Run Feature Engineering.
     4.  Train the Model.
-    5.  Save the results to `model.txt`.
+    5.  **Output the Result:** It will print the **MAE Score** (e.g., `5.41`) to the screen.
+    6.  **Save the Brain:** It saves the trained model to `model.txt`.
 
-## Technical Highlights
-*   **Parallelism:** Utilizes all CPU cores to engineer features for 200 stocks simultaneously, reducing processing time by 40%.
+## Key Features
+*   **Model:** LightGBM (Gradient Boosting Decision Tree) optimized for tabular financial data.
 *   **Memory Management:** Efficient data types and garbage collection to handle large high-frequency datasets.
-*   **Market Microstructure:** Implements "Imbalance Ratio" and "WAP" (Weighted Average Price) calculations standard in HFT.
