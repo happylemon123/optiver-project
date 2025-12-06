@@ -1,0 +1,14 @@
+# Ignore Data (Too large for GitHub)
+data/
+*.zip
+*.csv
+
+# Ignore Python Cache
+__pycache__/
+*.pyc
+
+# Ignore Docker
+.dockerignore
+
+# Ignore Mac
+.DS_Store
